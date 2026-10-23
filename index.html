@@ -263,8 +263,8 @@ td:first-child{font-weight:700;white-space:nowrap}
   max-width: 100% !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
-  background: #ffffff !important;
-  color: #1A2342 !important;
+  background: var(--bg) !important;
+  color: var(--ink) !important;
   font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif !important;
   position: relative !important;
 }
@@ -596,6 +596,78 @@ td:first-child{font-weight:700;white-space:nowrap}
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+/* =========================================================
+   [기본 및 다크 모드 가독성 최적화 (High-Contrast Typography)]
+   ========================================================= */
+.cards .lc h3 {
+  color: var(--ink) !important;
+}
+.cards .lc p {
+  color: var(--mute) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+  #bootcamp-app-root {
+    background: #0E1330 !important;
+    color: #EAEEF8 !important;
+  }
+  /* 1~5강 메인 카드 다크모드 대응 */
+  .cards .lc {
+    background: #131A3D !important;
+    border-color: #2A3563 !important;
+  }
+  .cards .lc h3 {
+    color: #FFFFFF !important;
+  }
+  .cards .lc p {
+    color: #CBD5E1 !important;
+  }
+  .cards .lc .n {
+    color: #FF8A63 !important;
+  }
+  .cards .lc .go {
+    color: #FF8A63 !important;
+  }
+  .cards .lc:hover {
+    border-color: #FF5722 !important;
+    box-shadow: 0 0 0 1px #FF5722, 0 0 20px rgba(255, 87, 34, 0.5), 0 8px 24px rgba(255, 87, 34, 0.25) !important;
+  }
+  /* 섹션 및 본문 텍스트 전체 화이트/실버 전환 */
+  .sec h2, .sec h3, h1, h2, h3, h4 {
+    color: #FFFFFF !important;
+  }
+  .sec p, .sec li, p, li {
+    color: #CBD5E1 !important;
+  }
+  .lead {
+    color: #A3ACC8 !important;
+  }
+  .eyebrow {
+    color: #FF8A63 !important;
+  }
+  /* 1~5강 상세페이지 내 박스/카드/체인 블록 */
+  .pipe > div, .box, .callout, .step, .card {
+    background: #131A3D !important;
+    border-color: #2A3563 !important;
+    color: #EAEEF8 !important;
+  }
+  .pipe > div h4, .box h4, .callout h4, .step h4 {
+    color: #FFFFFF !important;
+  }
+  /* 상단 네비게이션 다크 모드 */
+  .bootcamp-sticky-nav {
+    background: rgba(14, 19, 48, 0.96) !important;
+    border-bottom: 1px solid #2A3563 !important;
+  }
+  .bootcamp-nav-item:not(.active) {
+    background: #162048 !important;
+    color: #EAEEF8 !important;
+    border-color: #2A3563 !important;
   }
 }
 </style>
