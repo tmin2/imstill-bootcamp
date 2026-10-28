@@ -1065,7 +1065,28 @@ td:first-child{font-weight:700;white-space:nowrap}
 
 <script>
 (function() {
+  window.currentBootcampView = 'index';
+
+  function updateFloatingRefundBar() {
+    var bar = document.getElementById('refund-floating-bar');
+    if (!bar) return;
+    var cur = window.currentBootcampView || 'index';
+    var isLecture = (cur.indexOf('lecture') !== -1);
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+    if (isLecture && scrollY > 250) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', updateFloatingRefundBar, { passive: true });
+  window.addEventListener('resize', updateFloatingRefundBar, { passive: true });
+
   window.showBootcampView = function(viewId) {
+    window.currentBootcampView = viewId;
+    setTimeout(updateFloatingRefundBar, 100);
     var views = document.querySelectorAll('.bootcamp-view');
     for (var i = 0; i < views.length; i++) {
       views[i].classList.remove('active');
